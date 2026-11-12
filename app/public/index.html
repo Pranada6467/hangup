@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HangUp: check before you call</title>
+<meta name="description" content="Paste a PayPal invoice link and HangUp tells you whether the note asks you to call a phone number.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f5b'/%3E%3Cpath d='M8 20c4-6 12-6 16 0' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div class="in">
+  <div class="brand">HangUp <small data-i="tagline">Check before you call</small></div>
+  <nav aria-label="Main"><a href="index.html" aria-current="page" data-i="navCheck">Check an invoice</a><a href="console.html" data-i="navConsole">Platform console</a></nav>
+  <span id="health" class="pill" role="status"><i></i><span>server waking…</span></span>
+  <label class="sr" for="lang">Language</label>
+  <select id="lang" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select>
+</div></header>
+
+<main class="wrap">
+  <h1 data-i="h1">Got a PayPal invoice you don't recognise?</h1>
+  <p class="lead" data-i="lead">Before you call any number in it, paste the invoice link here. HangUp reads the note and tells you if it looks like a callback scam.</p>
+
+  <form id="f" class="card" novalidate>
+    <div id="modeLink">
+      <label for="url" data-i="urlLabel">Paste the PayPal invoice link</label>
+      <input id="url" class="field" type="url" inputmode="url" autocomplete="off" placeholder="https://www.paypal.com/invoice/p/…" >
+    </div>
+    <div id="modeText" class="hidden">
+      <label for="txt" data-i="txtLabel">Paste the text from the email</label>
+      <textarea id="txt" autocomplete="off"></textarea>
+      <label for="inv" data-i="invLabel">Who is the invoice from? (optional)</label>
+      <input id="inv" class="field" type="text" autocomplete="off">
+    </div>
+    <p class="hist"><label for="hist" data-i="histLabel">Have you paid this seller before? (optional)</label>
+      <select id="hist" class="field"><option value="" data-i="histUnknown">I don't know</option><option value="true" data-i="histNever">No, never</option><option value="false" data-i="histYes">Yes</option></select></p>
+    <p><button type="button" id="toggle" class="linkbtn" data-i="toggleText" aria-controls="modeText">Or paste the text from the email</button></p>
+    <button class="btn" type="submit" id="go" data-i="go">Check this invoice</button>
+  </form>
+
+  <div id="out" aria-live="polite" aria-atomic="true"></div>
+
+  <details class="card" id="caregiver">
+    <summary data-i="cgT">Set it up for someone else</summary>
+    <p data-i="cgIntro">Helping a parent or friend? The HangUp browser extension shows this warning right on the PayPal invoice page.</p>
+    <p><a class="btn secondary dl" href="hangup-extension.zip" download data-i="cgDownload">Download the extension (.zip)</a></p>
+    <ol class="steps">
+      <li data-i="cg1">Unzip the download. You get a folder called hangup-extension.</li>
+      <li data-i="cg2">In Chrome go to chrome://extensions, turn on Developer mode, click Load unpacked, and choose that folder.</li>
+      <li data-i="cg3">Click the puzzle-piece icon in Chrome's toolbar and pin HangUp. It already points at the hosted HangUp server, so there is nothing to configure.</li>
+    </ol>
+    <p><a href="fixtures/payer-view-sample.html" data-i="cgPractice">Open the practice invoice (clearly marked as not from PayPal)</a></p>
+    <p class="prov" data-i="cgNote">Be aware: the extension is not in the Chrome Web Store yet, so it has to be loaded by hand like this. It only runs on PayPal invoice pages, so the practice page will not show the banner: copy its note into the box above to see a result. The first check after the server has been idle can take up to a minute.</p>
+  </details>
+
+  <details class="card">
+    <summary data-i="howT">How HangUp decides</summary>
+    <p data-i="how">An AI reads the invoice text and fills in a short form (does it demand a callback? does it mention a charge you didn't make? does the brand match the sender?). Then plain code, not the AI, makes the call from that form. HangUp never moves money and never logs in to your PayPal.</p>
+  </details>
+</main>
+<footer><p data-i="foot">HangUp is an independent tool. It is not made by or affiliated with PayPal. It cannot vouch for an invoice; it only looks for one scam pattern.</p></footer>
+<script src="check.js"></script>
+</body>
+</html>

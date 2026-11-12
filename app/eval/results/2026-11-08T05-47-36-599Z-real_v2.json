@@ -1,0 +1,166 @@
+{
+  "data": "eval/data/real_v2.jsonl",
+  "sha256": "0442ea18ed119d0eb96ffde7845c3b9d5bfa6dddbbbe08f05921e75e569ce081",
+  "model": "anthropic/claude-haiku-5.5",
+  "llm_calls": 69,
+  "llm_cache_hits": 10,
+  "excluded_errors": 0,
+  "methods": {
+    "B0 phone-or-URL (US format)": {
+      "recall": 0.9310344827586207,
+      "recall_ci": [
+        0.8275862068965517,
+        1
+      ],
+      "n_scam": 29,
+      "caught": 27,
+      "ff": 0.3,
+      "ff_ci": [
+        0.18,
+        0.42
+      ],
+      "n_legit": 50,
+      "flagged_legit": 15,
+      "ff_phone": 0.8823529411764706,
+      "ff_phone_ci": [
+        0.7058823529411765,
+        1
+      ],
+      "n_legit_phone": 17
+    },
+    "B0-intl any phone/URL": {
+      "recall": 0.9310344827586207,
+      "recall_ci": [
+        0.8275862068965517,
+        1
+      ],
+      "n_scam": 29,
+      "caught": 27,
+      "ff": 0.32,
+      "ff_ci": [
+        0.2,
+        0.46
+      ],
+      "n_legit": 50,
+      "flagged_legit": 16,
+      "ff_phone": 0.9411764705882353,
+      "ff_phone_ci": [
+        0.8235294117647058,
+        1
+      ],
+      "n_legit_phone": 17
+    },
+    "B1 keyword+regex": {
+      "recall": 0.6551724137931034,
+      "recall_ci": [
+        0.4827586206896552,
+        0.8275862068965517
+      ],
+      "n_scam": 29,
+      "caught": 19,
+      "ff": 0.18,
+      "ff_ci": [
+        0.08,
+        0.3
+      ],
+      "n_legit": 50,
+      "flagged_legit": 9,
+      "ff_phone": 0.5294117647058824,
+      "ff_phone_ci": [
+        0.29411764705882354,
+        0.7647058823529411
+      ],
+      "n_legit_phone": 17
+    },
+    "B2 TF-IDF+LR (trained on synthetic dev)": {
+      "recall": 0.8620689655172413,
+      "recall_ci": [
+        0.7241379310344828,
+        0.9655172413793104
+      ],
+      "n_scam": 29,
+      "caught": 25,
+      "ff": 0.24,
+      "ff_ci": [
+        0.12,
+        0.36
+      ],
+      "n_legit": 50,
+      "flagged_legit": 12,
+      "ff_phone": 0.4117647058823529,
+      "ff_phone_ci": [
+        0.17647058823529413,
+        0.6470588235294118
+      ],
+      "n_legit_phone": 17
+    },
+    "HangUp: SUSPICIOUS or LIKELY (gate HOLD or BLOCK)": {
+      "recall": 0.9310344827586207,
+      "recall_ci": [
+        0.8275862068965517,
+        1
+      ],
+      "n_scam": 29,
+      "caught": 27,
+      "ff": 0.02,
+      "ff_ci": [
+        0,
+        0.06
+      ],
+      "n_legit": 50,
+      "flagged_legit": 1,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 17
+    },
+    "HangUp: LIKELY only (gate BLOCK)": {
+      "recall": 0.8620689655172413,
+      "recall_ci": [
+        0.7241379310344828,
+        0.9655172413793104
+      ],
+      "n_scam": 29,
+      "caught": 25,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 50,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 17
+    },
+    "HangUp, 5 Nov decide rule: SUSPICIOUS or LIKELY": {
+      "recall": 0.9310344827586207,
+      "recall_ci": [
+        0.8275862068965517,
+        1
+      ],
+      "n_scam": 29,
+      "caught": 27,
+      "ff": 0.04,
+      "ff_ci": [
+        0,
+        0.1
+      ],
+      "n_legit": 50,
+      "flagged_legit": 2,
+      "ff_phone": 0.058823529411764705,
+      "ff_phone_ci": [
+        0,
+        0.17647058823529413
+      ],
+      "n_legit_phone": 17
+    }
+  },
+  "git_commit": "fec404b",
+  "generated_at": "2026-11-08T05:47:36.599Z"
+}

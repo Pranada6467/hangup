@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIXTURE: Gmail-like reading pane (not Gmail)</title>
+<!--
+  TEST FIXTURE for extension/gmail.js. It is NOT Gmail. It imitates the reading-pane structure that open-source Gmail extensions rely on:
+    div[role=main] > h2.hP (subject)                          milasterb/tells gmail-adapter.js, baongocdz/phishguard gmail.ts, MohisnNasim89/InboxGuardian gmail.js
+    div.adn.ads[data-message-id][data-legacy-message-id]      message wrapper (same sources)
+    h3.iw > span.gD[email][name] (+ span.go)                  sender chip (same sources)
+    div.ii.gt > div.a3s.aiL                                   message body (same sources)
+    Gmail keeps previously opened messages in the DOM, hidden (baongocdz/phishguard gmail.ts note), so switching hides, never removes.
+  Email bodies: see SOURCES.md next to this file. Fictional or anonymised (phone numbers: area code kept, rest 555-01xx).
+-->
+<style>
+body{margin:0;font:14px Roboto,Arial,sans-serif;color:#202124;background:#f6f8fc}
+.wm{position:fixed;right:8px;bottom:8px;background:#b3261e;color:#fff;padding:4px 10px;font-weight:700;z-index:5;border-radius:4px}
+.layout{display:flex;min-height:100vh}.nav{width:220px;padding:12px;background:#fff;border-right:1px solid #ddd}.nav a{display:block;padding:6px 8px;color:#202124;text-decoration:none;border-radius:4px}.nav a:hover{background:#e8eaed}
+.nH{flex:1;padding:16px 24px;background:#fff;margin:8px;border-radius:12px}
+.hP{font-size:22px;font-weight:400;margin:0 0 12px}
+.adn{border-top:1px solid #e0e0e0;padding:8px 0}.gs{padding:0 0 0 0}.gE{margin-bottom:8px}.gD{font-weight:700}.go{color:#5f6368}
+.a3s{font-size:14px;line-height:1.5}.a3s h1{font-size:22px}.a3s h3{margin:12px 0 4px}.a3s p{margin:4px 0}
+</style></head><body>
+<div class="wm">FIXTURE: Gmail-like, NOT Gmail</div>
+<div class="layout">
+<div class="nav" role="navigation" aria-label="Fixture inbox">
+ <b>Fixture inbox</b>
+ <a href="#inbox/scam">Invoice (callback scam)</a><a href="#inbox/request">Money request (callback scam)</a><a href="#inbox/legit">Invoice (legit plumber)</a>
+ <a href="#inbox/receipt">PayPal receipt</a><a href="#inbox/lookalike">Look-alike sender</a><a href="#inbox/plain">Friend (plain)</a><a href="#inbox/thread">Thread: friend + invoice</a><a href="#inbox">Back to list</a>
+</div>
+<div class="nH" role="main" id="main"><div class="list" id="list">Inbox list view (no message open).</div></div>
+</div>
+<script>
+var M = {"scam": {"n": "PayPal", "e": "service@paypal.com", "s": "Invoice from Florida Public Benefit Corporation (TRX-#ec3260)", "body": "<p>Hello, You have successfully placed an order from the Florida Public Benefit Corporation using your PayPal account. If you encounter any issues with this transaction, please contact PayPal.</p>\n<p><b>PayPal</b></p>\n<h1>Here's your invoice</h1>\n<p>Florida Public Benefit Corporation sent you an invoice for $999.99 USD</p><p>Due on receipt.</p>\n<p><b>Florida Public Benefit Corporation</b></p>\n<p>You don't have any payments with this seller in the last year.</p>\n<h3>Invoice details</h3>\n<p>Amount requested</p><p>$999.99 USD</p><p>Note from seller</p><p>Fraud Alert: Didn&#39;t make this order? Call at 1-844-555-0124</p><p>Invoice number</p><p>TRX-#ec3260</p>\n<p><a href=\"https://www.paypal.com/invoice/p/#FIXTURE\">View and Pay Invoice</a></p>\n<p>Don't recognize this invoice?</p><p><a href=\"#\">Report this invoice</a></p>\n<p>Before paying, make sure you recognize this invoice. If you don't, report it. For example, PayPal would never use an invoice or a money request to ask you for your account credentials.</p>\n<p>PayPal</p><p>Help &amp; Contact | Security | Apps</p>"}, "request": {"n": "PayPal", "e": "service@paypal.com", "s": "Rosemary Beede sent you a money request", "body": "<p><b>PayPal</b></p>\n<h1>Rosemary Beede sent you a money request</h1>\n<h3>Payment request details</h3>\n<p>Amount requested</p><p>$299.99 USD</p><p>Note from Rosemary Beede:</p><p>Fraud Alert: Didn&#39;t make this order? Call at 1-844-555-0123</p>\n<p><a href=\"https://www.paypal.com/myaccount/money/requests/#FIXTURE\">View and Pay Request</a></p>\n<p>Don't recognize this invoice?</p><p><a href=\"#\">Report this invoice</a></p>\n<p>Before paying, make sure you recognize this invoice. If you don't, report it. For example, PayPal would never use an invoice or a money request to ask you for your account credentials.</p>\n<p>PayPal</p><p>Help &amp; Contact | Security | Apps</p>"}, "legit": {"n": "PayPal", "e": "service@paypal.com", "s": "Invoice from Dana's Plumbing (0042)", "body": "<p><b>PayPal</b></p>\n<h1>Here's your invoice</h1>\n<p>Dana&#39;s Plumbing sent you an invoice for $285.00 USD</p><p>Due on receipt.</p>\n<p><b>Dana&#39;s Plumbing</b></p>\n<p>You don't have any payments with this seller in the last year.</p>\n<h3>Invoice details</h3>\n<p>Water heater flush and valve replacement</p><p>Job at 14 Elm St, 12 March</p><p>1 x $285.00</p>\n<p>Amount requested</p><p>$285.00 USD</p><p>Note from seller</p><p>Thanks for choosing Dana&#39;s Plumbing. Questions about this job? Call Dana on (503) 555-0173, Mon-Fri 8-5.</p><p>Invoice number</p><p>0042</p>\n<p><a href=\"https://www.paypal.com/invoice/p/#FIXTURE\">View and Pay Invoice</a></p>\n<p>Don't recognize this invoice?</p><p><a href=\"#\">Report this invoice</a></p>\n<p>Before paying, make sure you recognize this invoice. If you don't, report it. For example, PayPal would never use an invoice or a money request to ask you for your account credentials.</p>\n<p>PayPal</p><p>Help &amp; Contact | Security | Apps</p>"}, "receipt": {"n": "PayPal", "e": "service@paypal.com", "s": "You sent a payment of $20.00 USD to Corner Bakery", "body": "<p><b>PayPal</b></p><h1>You sent $20.00 USD to Corner Bakery</h1><p>Transaction ID</p><p>FIXTURE0000000</p><p>Questions? Call the bakery on 555-0188 any time.</p>"}, "lookalike": {"n": "PayPal Service", "e": "service@paypal.com.mail-notice.example", "s": "Invoice from Florida Public Benefit Corporation (TRX-#ec3260)", "body": "<p><b>PayPal</b></p>\n<h1>Here's your invoice</h1>\n<p>Florida Public Benefit Corporation sent you an invoice for $999.99 USD</p><p>Due on receipt.</p>\n<p><b>Florida Public Benefit Corporation</b></p>\n<p>You don't have any payments with this seller in the last year.</p>\n<h3>Invoice details</h3>\n<p>Amount requested</p><p>$999.99 USD</p><p>Note from seller</p><p>Fraud Alert: Didn&#39;t make this order? Call at 1-844-555-0124</p><p>Invoice number</p><p>TRX-#ec3260</p>\n<p><a href=\"https://www.paypal.com/invoice/p/#FIXTURE\">View and Pay Invoice</a></p>\n<p>Don't recognize this invoice?</p><p><a href=\"#\">Report this invoice</a></p>\n<p>Before paying, make sure you recognize this invoice. If you don't, report it. For example, PayPal would never use an invoice or a money request to ask you for your account credentials.</p>\n<p>PayPal</p><p>Help &amp; Contact | Security | Apps</p>"}, "plain": {"n": "Sam Rivera", "e": "sam.rivera@example.com", "s": "Saturday plans", "body": "<p>Hi! Are we still on for Saturday? If the plan changes call me on 555-0142 and I will sort the invoice for the venue.</p><p>Sam</p>"}};
+var THREAD = ['plain','scam'];
+var seq = 0;
+function msgEl(id) {
+  var m = M[id], n = ++seq;
+  var w = document.createElement('div'); w.className = 'adn ads'; w.setAttribute('data-message-id', '#msg-f:fx' + id); w.setAttribute('data-legacy-message-id', 'fx' + id + n); w.setAttribute('data-fxid', id);
+  w.innerHTML = '<div class="gs"><div class="gE iv gt"><table class="cf gJ"><tbody><tr class="acZ"><td class="gF gK"><table class="cf ix"><tbody><tr><td class="c2"><h3 class="iw"><span class="qu"><span class="gD" email="' + m.e + '" name="' + m.n + '">' + m.n + '</span> <span class="go">&lt;' + m.e + '&gt;</span></span></h3></td></tr></tbody></table></td></tr></tbody></table></div>' +
+    '<div class="ii gt"><div id=":fx' + n + '" class="a3s aiL "><div dir="ltr">' + m.body + '</div></div></div></div>';
+  return w;
+}
+var main = document.getElementById('main'), shown = {};
+function ensureSubject(text) {
+  var h = main.querySelector('h2.hP');
+  if (!h) { var wrap = document.createElement('div'); wrap.className = 'ha'; wrap.innerHTML = '<h2 class="hP" tabindex="-1"></h2>'; main.insertBefore(wrap, main.firstChild); h = wrap.firstChild; }
+  h.textContent = text; return h;
+}
+function openFromHash() {
+  var id = (location.hash.match(/^#inbox\/(\w+)/) || [])[1];
+  var all = main.querySelectorAll('.adn'); for (var i = 0; i < all.length; i++) all[i].style.display = 'none';
+  var hp = main.querySelector('.ha'); if (hp) hp.style.display = id ? '' : 'none';
+  document.getElementById('list').style.display = id ? 'none' : '';
+  if (!id) return;
+  var ids = id === 'thread' ? THREAD : [id];
+  ensureSubject(id === 'thread' ? 'Re: Saturday plans' : M[id].s);
+  ids.forEach(function (k) {
+    var key = (id === 'thread' ? 'thread:' : '') + k;
+    if (!shown[key]) { shown[key] = msgEl(k); main.appendChild(shown[key]); }
+    shown[key].style.display = '';
+  });
+}
+// Test hook: replace the opened message in place (same element, new content), the way a re-render could.
+window.__replaceBody = function (toId) { var a = main.querySelector('.adn:not([style*="none"]) .a3s > div'); a.innerHTML = M[toId].body; var s = main.querySelector('.adn:not([style*="none"]) .gD'); s.setAttribute('email', M[toId].e); };
+window.addEventListener('hashchange', openFromHash); openFromHash();
+</script></body></html>

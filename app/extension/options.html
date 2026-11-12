@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HangUp options</title>
+<style>
+:root{color-scheme:light dark}
+body{font:18px/1.5 system-ui,sans-serif;max-width:640px;margin:32px auto;padding:0 16px}
+input{font:inherit;width:100%;padding:10px;box-sizing:border-box}
+button{font:inherit;padding:10px 18px;margin-top:12px;cursor:pointer}
+#st{margin-top:12px;min-height:1.5em}
+</style></head>
+<body>
+<h1>HangUp options</h1>
+<label for="base">HangUp server address</label>
+<input id="base" type="url" placeholder="https://payyourpal-hangup.onrender.com">
+<button id="save">Save</button>
+<p id="st" role="status"></p>
+<h2>Stricter mode (optional)</h2>
+<label><input id="unf" type="checkbox" style="width:auto"> Treat invoices from sellers the page does not vouch for as <em>unfamiliar</em></label>
+<p>PayPal's invoice <em>email</em> says "You don't have any payments with this seller in the last year." The invoice <em>page</em> usually does not, so HangUp cannot see your payment history. Tick this only if you want HangUp to assume you have never paid the seller: invoices that say almost nothing except a phone number are then held back more often. It can make HangUp stricter, never more lenient. Off by default.</p>
+<button id="saveunf">Save</button>
+<p>The extension sends the seller-written text of the PayPal invoice page you have open (or of a PayPal invoice email open in Gmail) to this server to be checked. Use only a server you trust.</p>
+<script src="options.js"></script>
+</body></html>

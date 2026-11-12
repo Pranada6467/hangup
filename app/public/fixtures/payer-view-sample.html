@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIXTURE — not a PayPal page</title>
+<style>
+body{font:16px system-ui,sans-serif;margin:0;padding:24px;background:#f5f5f5;color:#222}
+.wm{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-size:7vw;font-weight:800;color:rgba(180,0,0,.12);transform:rotate(-20deg);pointer-events:none;text-align:center}
+.box{max-width:640px;margin:60px auto 0;background:#fff;padding:24px;border:1px solid #ccc}
+.lbl{color:#666;font-size:13px;margin-top:14px}table{width:100%;border-collapse:collapse}td{border-top:1px solid #ddd;padding:8px}
+</style></head><body>
+<div class="wm">FIXTURE — not a PayPal page</div>
+<p><strong>FIXTURE for local testing of the HangUp content script. Not a PayPal page. Content is fictional.</strong></p>
+<div class="box">
+  <p class="invoice-title">Invoice #FIXTURE-0001</p>
+  <h2>Norton Secure Renewals LLC</h2>
+  <p class="merchant-info-line-item">Norton Secure Renewals LLC</p>
+  <h2 class="text-elem">$499.99</h2>
+  <p class="text-elem">Issued: Nov 4, 2026</p>
+  <div class="status-container"><span>Due</span></div>
+  <p class="text-elem">Bill to</p>
+  <p class="text-elem">fixture-buyer@example.com</p>
+  <p class="label">Note from seller</p>
+  <p>Your account has been charged $499.99. If you did not authorise this, call our billing team immediately at 1-808-555-0142 to cancel and get a refund.</p>
+  <p class="items-header">Items</p>
+  <div class="item">
+    <p class="text-elem" data-testid="item-name">Annual protection plan</p>
+    <p class="item-total-price">$499.99</p>
+    <p class="text-elem" data-testid="item-quantity-price-tax">1 x $499.99</p>
+    <p class="item-details">Auto-renewed subscription</p>
+  </div>
+  <p>Total</p><p>$499.99</p>
+  <p>Terms and conditions</p>
+  <p>Refund requests must be made within 24 hours.</p>
+  <h4>Amount due</h4>
+  <h3>$499.99</h3>
+</div>
+<button id="acceptAllButton" type="button">Yes, I accept</button>
+</body></html>

@@ -1,0 +1,15 @@
+{
+  "name": "hangup",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "HangUp: callback-scam screen for PayPal invoice text",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "NODE_USE_ENV_PROXY=1 node src/server.js",
+    "test": "node --test \"test/*.test.js\"",
+    "eval": "node eval/run_eval.js",
+    "build:ext": "node scripts/build_extension_zip.js"
+  },
+  "dependencies": { "express": "^5", "playwright": "1.63.0" }
+}

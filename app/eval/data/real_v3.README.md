@@ -1,0 +1,17 @@
+# real_v3: held-out real-world text, frozen before HangUp was run on it
+
+`real_v3.jsonl` holds 41 rows of **real, human-written text** collected 2026-11-08 and frozen (sha256 in `real_v3.sha256`) **before HangUp (any version, with or without the unfamiliar-seller signal) was run on any row**. It exists to test the `ctx.unfamiliar_seller` change, which was designed and tuned on `real_v2` (now a dev set). Nothing in real_v3 may be used to tune that rule. Same conventions as `real_v2.README.md`.
+
+| Part | Rows | What it is |
+|---|---|---|
+| Real scam notes | 16 (`r3-001`…`r3-016`) | Scammer-written PayPal invoice, money-request or auto-payment text quoted by victims on 800notes (phone pages not used in real_v2, plus one forum thread), TechScammersUnited and ScamPulse. **None of these URLs appears in `real_v2_SOURCES.md`.** 7 are terse or charge-less (bare number, number in the seller name, "Fraud Alert: Didn't make this order? Call at …"). |
+| Real legitimate billing text | 25 (`rl3-001`…`rl3-025`) | Verbatim billing, payment, late-fee and "call our office" passages from 17 businesses/organisations **not in real_v2**: two orthopaedic practices (x3 passages), an ISP (x3), a security-alarm company, a pest-control company (x2), a dental lab, two auto repair shops, a medical practice, a counselling practice, a recycling authority, and six pet groomers/boarders (x10). 13 rows contain a phone number. |
+
+## Honest caveats
+- **Same limits as real_v2.** The legitimate rows are not sent invoices; they are billing policy text put in the note field. Real first invoices from honest businesses are almost never published, so **real_v3 cannot show whether the unfamiliar-seller rule holds off on a real first invoice that names goods or services.** The unit tests cover that case with hand-written examples, and it is labelled as untested on real data.
+- **Only 13 of 25 legitimate rows carry a phone number** (the pet-business pages mostly have none), and **all 25 are longer than the rule's 10-word limit**, so the rule could not have fired on any of them even with the signal set to true. That is a property of what is publicly published, not evidence that the rule is safe on real first invoices. I prioritised phone-bearing text but ran out of public pages with it in the time available.
+- **Scam sources are victim-pasted emails**, so wording is what the victim copied. Several templates repeat (Palomino Bazaar "Unrecognized transaction?" x2, "Fraud Alert: Didn't make this order?" x2, five rows carrying the number in the seller name).
+- `source_shows_unfamiliar_line` is `true` only where the quoted email body itself printed PayPal's "You don't have any payments with this seller in the last year." line (r3-001, r3-004, r3-006, r3-010, r3-015). `null` means the source did not reproduce the email body, **not** that the line was absent. Legitimate rows have `null` (they are not emails).
+- Phone numbers are anonymised in both classes the same way as real_v2: area code kept, the rest becomes `555-01xx`, formatting preserved, one real number to one fake. The vanity number `1-888-66-BLARG` and a dental-lab extension were left as published. One UK-format number was dropped rather than altered by not using that passage.
+- Pages that returned 403 or a bot challenge (BBB Scam Tracker, malwaretips.com, scammer.info, hothardware) were skipped, not worked around.
+- Labels are by source (scam reports vs the businesses' own sites). Nobody re-labelled them. n=41; confidence intervals will be wide.

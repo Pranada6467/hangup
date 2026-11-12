@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HangUp demo: mock inbox (staged emails)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f5b'/%3E%3Cpath d='M8 20c4-6 12-6 16 0' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<!--
+  MOCK INBOX for the HangUp demo video. It is NOT Gmail and NOT PayPal. The three emails are staged: written for the demo, sent by nobody.
+  The reading pane copies the structure that open-source Gmail extensions rely on (div.adn / div.a3s / span.gD[email] / h2.hP), so the
+  HangUp extension's Gmail script (extension/gmail.js, which is also allowed on this one page) behaves here as it would on a real Gmail message.
+  Without the extension this page shows the emails and offers a clearly labelled "Preview without the extension" button, which sends the
+  same fields the Gmail script would send to /api/check and draws the result with the extension's own banner.js (served from /ext/).
+-->
+<style>
+body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#202124;background:#f6f8fc}
+.top{background:#1f2a33;color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.top b{font-size:18px;text-transform:uppercase}.tag{background:#ffe58a;color:#3a2a00;font-weight:700;padding:2px 10px;border-radius:999px}
+.note{max-width:960px;margin:12px auto;padding:0 16px;font-size:15px;color:#37474f}
+.note a{color:#0b57d0}
+.layout{display:flex;gap:12px;max-width:1100px;margin:0 auto 24px;padding:0 16px;align-items:flex-start;flex-wrap:wrap}
+.list{flex:0 0 320px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #dadce0}
+.row{display:block;padding:10px 14px;border-bottom:1px solid #eee;color:inherit;text-decoration:none}.row:hover,.row:focus-visible{background:#eef3fc;outline:none}
+.row small{display:block;color:#5f6368}.row .t{font-weight:700;display:block}
+.nH{flex:1 1 420px;min-width:0;background:#fff;border-radius:12px;padding:16px 22px;border:1px solid #dadce0}
+.hP{font-size:21px;font-weight:400;margin:0 0 10px}
+.adn{border-top:1px solid #e0e0e0;padding:8px 0}.gD{font-weight:700}.go{color:#5f6368}
+.staged{display:inline-block;background:#ffe58a;color:#3a2a00;font-weight:700;padding:1px 8px;border-radius:4px;font-size:13px;margin:0 0 6px}
+.a3s{font-size:15px;line-height:1.5;overflow-wrap:anywhere}.a3s h1{font-size:22px;margin:8px 0}.a3s h3{margin:12px 0 4px}.a3s p{margin:4px 0}
+.empty{color:#5f6368}
+.pv{margin:10px 0;padding:10px 12px;border:2px dashed #546270;border-radius:8px;background:#f1f3f4}
+.pv button{font:inherit;font-weight:700;cursor:pointer;padding:6px 14px;border-radius:8px;border:2px solid #1f2a33;background:#fff;color:#1f2a33}
+.pv button:disabled{opacity:.6;cursor:wait}.pv button:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+.pv small{display:block;margin-top:6px;color:#37474f}
+</style></head><body>
+<div class="top"><b>Mock inbox</b><span class="tag">NOT Gmail &middot; NOT PayPal &middot; staged emails for the HangUp demo</span></div>
+<div class="note">
+  <p><strong>What this is.</strong> A stand-in inbox so the video can show HangUp's Gmail check without opening anyone's real mailbox. The emails are written for the demo. The scam is the same staged &ldquo;TotalDefend&rdquo; invoice the gate holds on the <a href="console.html">console</a>. PayPal sandbox invoices are never delivered to real inboxes, so this is the only way to show the email moment.</p>
+  <p><strong>To see HangUp act:</strong> install the <a href="hangup-extension.zip">HangUp extension</a> (load unpacked: see its README), then open the first email. A banner appears above the message before you click or call. No extension? Open an email and use <strong>Preview without the extension</strong>: it asks the same server the same question and draws the same banner.</p>
+</div>
+<div class="layout">
+  <div class="list" role="navigation" aria-label="Mock inbox">
+    <a class="row" href="#inbox/scam"><span class="t">PayPal-style sender (staged)</span>TEST EMAIL (staged): Invoice from hangup STAGED Maple Bay Digital<small>Staged scam invoice</small></a>
+    <a class="row" href="#inbox/dana"><span class="t">PayPal-style sender (staged)</span>TEST EMAIL (staged): Invoice from hangup STAGED Dana's Plumbing<small>Staged genuine invoice</small></a>
+    <a class="row" href="#inbox/bakery"><span class="t">Corner Bakery (staged)</span>Your order is ready<small>Staged ordinary email, ignored by HangUp</small></a>
+  </div>
+  <div class="nH" role="main" id="main"><p class="empty" id="empty">Pick an email on the left.</p></div>
+</div>
+<script src="ext/banner.js"></script>
+<script src="ext/gmail.js"></script>
+<script>
+(function () {
+  var P = '<p><b>PayPal-style layout (staged copy, not sent by PayPal)</b></p>';
+  var M = {
+    scam: { n: 'PayPal-style sender (staged)', e: 'service@paypal.com', s: 'TEST EMAIL (staged): Invoice from hangup STAGED Maple Bay Digital',
+      b: P + "<h1>Here's your invoice</h1><p>hangup STAGED Maple Bay Digital sent you an invoice for $499.00 USD</p><p>Due on receipt.</p><p><b>hangup STAGED Maple Bay Digital</b></p><p>You don't have any payments with this seller in the last year.</p><h3>Invoice details</h3><p>TotalDefend Antivirus 3-year renewal</p><p>Auto-renewal. Call 1 888 555 0142 to cancel.</p><p>1 x $499.00</p><p>Amount requested</p><p>$499.00 USD</p><p>Note from seller</p><p>TotalDefend Antivirus: your 3-year protection plan renewed today and $499.00 was charged to your account. If you did not authorise this, call our billing helpline at 1-888-555-0142 within 24 hours to cancel and get a refund.</p><p>Invoice number</p><p>STAGED-0001</p><p><a href=\"#inbox/scam\">View and Pay Invoice</a> (staged: goes nowhere)</p><p>Don't recognize this invoice?</p><p>Before paying, make sure you recognize this invoice. If you don't, report it.</p>" },
+    dana: { n: 'PayPal-style sender (staged)', e: 'service@paypal.com', s: "TEST EMAIL (staged): Invoice from hangup STAGED Dana's Plumbing",
+      b: P + "<h1>Here's your invoice</h1><p>hangup STAGED Dana's Plumbing sent you an invoice for $285.00 USD</p><p>Due on receipt.</p><p><b>hangup STAGED Dana's Plumbing</b></p><p>You don't have any payments with this seller in the last year.</p><h3>Invoice details</h3><p>Water heater flush and valve replacement</p><p>Job at 14 Elm St, 12 March</p><p>1 x $285.00</p><p>Amount requested</p><p>$285.00 USD</p><p>Note from seller</p><p>Thanks for choosing Dana's Plumbing. Questions about this job? Call Dana on (503) 555-0173, Mon-Fri 8-5.</p><p>Invoice number</p><p>STAGED-0002</p><p><a href=\"#inbox/dana\">View and Pay Invoice</a> (staged: goes nowhere)</p>" },
+    bakery: { n: 'Corner Bakery (staged)', e: 'orders@bakery.example.com', s: 'Your order is ready',
+      b: '<p>Your order is ready for pickup. Questions? Call the shop on 555-0188.</p>' }
+  };
+  var main = document.getElementById('main'), shown = {}, n = 0;
+  // Extension-free preview: the same extraction and payload code the Gmail script uses (gmail.js), the same server call, the same banner (banner.js).
+  function previewBox(w) {
+    var box = document.createElement('div'); box.className = 'pv';
+    box.innerHTML = '<button type="button" data-preview>Preview without the extension</button><small>Mock-inbox preview, drawn by this page. With the HangUp extension installed the banner appears by itself. Sends only the seller-written fields of this staged email to /api/check.</small><span class="pvslot"></span>';
+    var btn = box.querySelector('button');
+    btn.onclick = function () { runPreview(w, btn); };
+    return box;
+  }
+  function runPreview(w, btn) {
+    var G = globalThis.__hangupGmail, B = globalThis.__hangupBanner, body = w.querySelector('.a3s');
+    if (!G || !B) { alert('Could not load the banner code from /ext/.'); return; }
+    var parsed = G.parseEmail(body.innerText);
+    if (!parsed) return;
+    var payload = G.payloadFor(parsed), old = w.querySelector('#hangup-preview-banner'); if (old) old.remove();
+    btn.disabled = true; btn.textContent = 'Checking… (a few seconds)';
+    var host = B.showBanner('none', '\u23f3', 'HangUp is checking this ' + parsed.kind + '…', 'Please wait before you call any number in it.', '', 'status', { mount: body, mode: 'open', hostId: 'hangup-preview-banner' });
+    fetch('api/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return null; }).then(function (data) { return { ok: r.ok, status: r.status, data: data }; }); })
+      .catch(function () { return { ok: false, status: 0, data: { error: 'NETWORK', message: 'Could not reach the HangUp server.' } }; })
+      .then(function (resp) {
+        host.remove();
+        B.render(resp, { note: payload.note, raw: false }, { email: true, what: parsed.kind, mount: body, mode: 'open', hostId: 'hangup-preview-banner' });
+        btn.disabled = false; btn.textContent = 'Preview again';
+      });
+  }
+  function open() {
+    var id = (location.hash.match(/^#inbox\/(\w+)/) || [])[1];
+    var all = main.querySelectorAll('.adn,.ha'); for (var i = 0; i < all.length; i++) all[i].style.display = 'none';
+    document.getElementById('empty').style.display = id && M[id] ? 'none' : '';
+    if (!id || !M[id]) return;
+    if (!shown[id]) {
+      var m = M[id], k = ++n;
+      var h = document.createElement('div'); h.className = 'ha'; h.innerHTML = '<h2 class="hP"></h2>'; h.firstChild.textContent = m.s;
+      var w = document.createElement('div'); w.className = 'adn ads'; w.setAttribute('data-message-id', '#msg-f:demo' + id); w.setAttribute('data-legacy-message-id', 'demo' + id + k);
+      w.innerHTML = (m.e.indexOf('paypal') > -1 ? '<span class="staged">TEST EMAIL (staged)</span>' : '') +
+        '<div class="gs"><div class="gE iv gt"><h3 class="iw"><span class="qu"><span class="gD" email="' + m.e + '" name="' + m.n + '">' + m.n + '</span> <span class="go">&lt;' + m.e + '&gt;</span></span></h3></div>' +
+        '<div class="ii gt"><div class="a3s aiL "><div dir="ltr">' + m.b + '</div></div></div></div>';
+      if (m.e.indexOf('paypal') > -1) w.querySelector('.gs').insertBefore(previewBox(w), w.querySelector('.ii'));
+      main.appendChild(h); main.appendChild(w); shown[id] = [h, w];
+    }
+    shown[id][0].style.display = ''; shown[id][1].style.display = '';
+  }
+  window.addEventListener('hashchange', open); open();
+})();
+</script>
+</body></html>

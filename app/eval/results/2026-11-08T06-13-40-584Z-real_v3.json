@@ -1,0 +1,232 @@
+{
+  "data": "eval/data/real_v3.jsonl",
+  "sha256": "0dc0913480d9d322906ac652745a1fcbcaecbc44d6b95c3f222e183bd03f8495",
+  "model": "anthropic/claude-haiku-5.5",
+  "llm_calls": 41,
+  "llm_cache_hits": 82,
+  "excluded_errors": 0,
+  "methods": {
+    "B0 phone-or-URL (US format)": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0.52,
+      "ff_ci": [
+        0.32,
+        0.72
+      ],
+      "n_legit": 25,
+      "flagged_legit": 13,
+      "ff_phone": 1,
+      "ff_phone_ci": [
+        1,
+        1
+      ],
+      "n_legit_phone": 13
+    },
+    "B0-intl any phone/URL": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0.52,
+      "ff_ci": [
+        0.32,
+        0.72
+      ],
+      "n_legit": 25,
+      "flagged_legit": 13,
+      "ff_phone": 1,
+      "ff_phone_ci": [
+        1,
+        1
+      ],
+      "n_legit_phone": 13
+    },
+    "B1 keyword+regex": {
+      "recall": 0.6875,
+      "recall_ci": [
+        0.4375,
+        0.875
+      ],
+      "n_scam": 16,
+      "caught": 11,
+      "ff": 0.16,
+      "ff_ci": [
+        0.04,
+        0.32
+      ],
+      "n_legit": 25,
+      "flagged_legit": 4,
+      "ff_phone": 0.3076923076923077,
+      "ff_phone_ci": [
+        0.07692307692307693,
+        0.5384615384615384
+      ],
+      "n_legit_phone": 13
+    },
+    "B2 TF-IDF+LR (trained on synthetic dev)": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0.24,
+      "ff_ci": [
+        0.08,
+        0.4
+      ],
+      "n_legit": 25,
+      "flagged_legit": 6,
+      "ff_phone": 0.3076923076923077,
+      "ff_phone_ci": [
+        0.07692307692307693,
+        0.6153846153846154
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp: SUSPICIOUS or LIKELY (gate HOLD or BLOCK)": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp: LIKELY only (gate BLOCK)": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp, 5 Nov decide rule: SUSPICIOUS or LIKELY": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp + unfamiliar_seller=true on EVERY row (worst case): HOLD or BLOCK": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp + unfamiliar_seller=true on EVERY row: BLOCK only": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    },
+    "HangUp + unfamiliar_seller = source value (true where the source shows the line, else null): HOLD or BLOCK": {
+      "recall": 1,
+      "recall_ci": [
+        1,
+        1
+      ],
+      "n_scam": 16,
+      "caught": 16,
+      "ff": 0,
+      "ff_ci": [
+        0,
+        0
+      ],
+      "n_legit": 25,
+      "flagged_legit": 0,
+      "ff_phone": 0,
+      "ff_phone_ci": [
+        0,
+        0
+      ],
+      "n_legit_phone": 13
+    }
+  },
+  "git_commit": "1d47643",
+  "generated_at": "2026-11-08T06:13:40.584Z"
+}

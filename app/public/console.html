@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HangUp Gate console</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f5b'/%3E%3Cpath d='M8 20c4-6 12-6 16 0' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/ag-grid.css">
+<link rel="stylesheet" href="vendor/ag-theme-quartz.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="console">
+<header class="top"><div class="in">
+  <div class="brand">HangUp Gate <small>Screen every invoice before PayPal sends it</small></div>
+  <nav aria-label="Main"><a href="index.html">Check an invoice</a><a href="console.html" aria-current="page">Platform console</a></nav>
+  <span id="health" class="pill" role="status"><i></i><span>checking server…</span></span>
+</div></header>
+
+<main class="wrap wide">
+  <section class="card" id="story" aria-labelledby="storyh" style="margin:10px 0 8px;padding:8px 12px">
+    <div class="row">
+      <strong id="storyh" style="margin-right:4px">Demo story <span class="tag">STAGED</span></strong>
+      <div id="storySteps" class="steps4"></div>
+      <button class="btn secondary small" id="storyReset" type="button" style="margin-left:auto">Reset demo</button>
+    </div>
+    <div id="storyMsg" aria-live="polite"></div>
+    <details id="storyLogBox" style="margin:6px 0 0"><summary class="prov">Story log: what PayPal says at each step (fictional sellers, sandbox, nothing is emailed)</summary><div id="storyLog"></div></details>
+  </section>
+  <h1 class="sr">Invoice screening console</h1>
+  <div id="seedBanner" class="banner hidden" role="status" style="padding:4px 10px;font-size:.85rem;margin:0 0 6px">STAGED demo: fictional sellers, sandbox merchant, @example.com recipients. Rows tagged STAGED are not real seller traffic.</div>
+  <div id="msg" aria-live="polite"></div>
+
+  <div class="tabs" role="tablist" aria-label="Console views">
+    <button role="tab" id="tabDec" aria-selected="true" aria-controls="pDec" type="button">Decisions</button>
+    <button role="tab" id="tabCamp" aria-selected="false" aria-controls="pCamp" type="button">Campaigns <span class="count" id="nCamp">0</span></button>
+    <span class="grow" style="flex:1"></span>
+    <span id="live" class="prov" aria-live="off" style="align-self:center">not loaded yet</span>
+    <button class="btn secondary small" id="seed" type="button" style="align-self:center;margin-bottom:2px">Stage demo</button>
+  </div>
+
+  <section id="pDec" role="tabpanel" aria-labelledby="tabDec">
+    <div class="toolbar" id="filters" role="group" aria-label="Quick filters">
+      <button class="chip on" type="button" data-filter="all" aria-pressed="true">All <span class="count" data-count="all">0</span></button>
+      <button class="chip" type="button" data-filter="review" aria-pressed="false">Needs review (HELD) <span class="count" data-count="review">0</span></button>
+      <button class="chip" type="button" data-filter="blocked" aria-pressed="false">Blocked <span class="count" data-count="blocked">0</span></button>
+      <button class="chip" type="button" data-filter="campaigns" aria-pressed="false">Flagged campaigns <span class="count" data-count="campaigns">0</span></button>
+      <span id="phoneFilter" class="chip on hidden"></span>
+      <input id="quick" class="qf" type="search" placeholder="Search every column…" aria-label="Quick filter">
+      <button class="btn secondary small" id="clearFilters" type="button">Clear filters</button>
+      <button class="btn secondary small" id="exportCsv" type="button">Export CSV</button>
+    </div>
+    <div class="bulk" id="bulk" role="region" aria-label="Bulk actions">
+      <span id="selInfo" class="prov" aria-live="polite">Tick rows to act on them. A row is only tickable when HangUp can act on it.</span>
+      <span class="grow"></span>
+      <button class="btn small" id="bulkRelease" type="button" disabled>Release selected</button>
+      <button class="btn secondary small" id="bulkBlock" type="button" disabled>Block selected</button>
+      <button class="btn danger small" id="bulkCancel" type="button" disabled>Cancel selected sent invoices</button>
+    </div>
+    <div id="bulkMsg" aria-live="polite"></div>
+    <div class="card" style="margin:0;padding:6px;position:relative">
+      <div id="grid" class="ag-theme-quartz"></div>
+      <div id="fallback" class="hidden" style="overflow:auto"></div>
+      <div id="empty" class="empty" role="status">Loading decisions…</div>
+    </div>
+    <p class="prov" style="margin:6px 2px">Built on <a href="https://www.ag-grid.com/" target="_blank" rel="noopener">AG Grid Community</a> 32.3.3. Click a row for the full invoice, the AI's reasoning, the action history and the PayPal links.</p>
+  </section>
+
+  <section id="pCamp" role="tabpanel" aria-labelledby="tabCamp" class="hidden">
+    <p class="lead" style="font-size:.95rem;margin:10px 0">Invoices grouped by the callback number in their text. The same number across 3 or more sellers, with at least one flagged invoice, is the signature of one campaign. Cancel only ever touches the flagged invoices; a benign invoice that shares the number is never cancelled.</p>
+    <div class="card" style="margin:0;padding:6px">
+      <div id="cgrid" class="ag-theme-quartz"></div>
+      <div id="camps"></div>
+    </div>
+  </section>
+
+  <div class="two" style="margin-top:16px">
+    <section class="card" style="margin-top:0" aria-labelledby="wh">
+      <h2 id="wh">Webhook events</h2>
+      <div id="hooks"></div>
+    </section>
+    <details class="card" style="margin:0">
+        <summary>Submit one invoice to the gate</summary>
+        <form id="sf" class="fields">
+          <div><label for="s_id">Seller ID</label><input id="s_id" class="field" type="text" required value="seller-demo-1"></div>
+          <div><label for="s_name">Seller name</label><input id="s_name" class="field" type="text" required value="Demo Plumbing Ltd"></div>
+          <div><label for="s_contact">Declared contact</label><input id="s_contact" class="field" type="text" placeholder="+1 555 0100"></div>
+          <div><label for="s_mail">Recipient email</label><input id="s_mail" class="field" type="email" required value="customer@example.com"></div>
+          <div><label for="s_cur">Currency</label><input id="s_cur" class="field" type="text" value="USD" maxlength="3"></div>
+          <div><label for="i_name">Item name</label><input id="i_name" class="field" type="text" required value="Service call"></div>
+          <div class="full"><label for="i_desc">Item description</label><input id="i_desc" class="field" type="text"></div>
+          <div><label for="i_qty">Quantity</label><input id="i_qty" class="field" type="number" min="1" value="1"></div>
+          <div><label for="i_amt">Unit amount</label><input id="i_amt" class="field" type="number" min="0" step="0.01" value="80.00"></div>
+          <div class="full"><label for="s_note">Note to recipient</label><textarea id="s_note" class="field"></textarea></div>
+          <div class="full"><label for="s_terms">Terms</label><textarea id="s_terms" class="field" style="min-height:60px"></textarea></div>
+          <div class="full"><button class="btn" type="submit">Screen and send</button></div>
+        </form>
+        <div id="submsg" aria-live="polite"></div>
+      </details>
+  </div>
+</main>
+
+<aside id="drawer" class="drawer hidden" role="dialog" aria-modal="false" aria-labelledby="drawerH" tabindex="-1">
+  <div class="drawer-head"><h2 id="drawerH" style="margin:0;margin-right:auto">Decision details</h2><button class="btn secondary small" id="drawerClose" type="button" aria-label="Close details">Close (Esc)</button></div>
+  <div id="detail"></div>
+</aside>
+
+<dialog id="dlg" aria-labelledby="dlgT">
+  <form method="dialog">
+    <h2 id="dlgT"></h2>
+    <div id="dlgB"></div>
+    <div class="row" style="justify-content:flex-end;margin-top:14px">
+      <button class="btn secondary small" id="dlgNo" value="cancel" type="submit">Cancel</button>
+      <button class="btn small" id="dlgOk" value="ok" type="submit">Confirm</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="vendor/ag-grid-community.min.js"></script>
+<script src="retry.js"></script>
+<script src="console.js"></script>
+</body>
+</html>

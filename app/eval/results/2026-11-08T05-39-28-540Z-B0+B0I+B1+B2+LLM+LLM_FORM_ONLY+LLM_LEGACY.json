@@ -1,0 +1,2136 @@
+{
+  "synthetic_data": true,
+  "data": "eval/data/notes.jsonl",
+  "counts": {
+    "dev": 310,
+    "test": 180,
+    "adv": 51,
+    "real": 10,
+    "heldout2": 216
+  },
+  "real_data": "eval/data/real_quoted.jsonl",
+  "model": "anthropic/claude-haiku-5.5",
+  "b2": {
+    "threshold": 0.62,
+    "vocab": 12610,
+    "trained_on": 310
+  },
+  "not_run": {},
+  "llm_cache": {
+    "calls": 457,
+    "hits": 0
+  },
+  "methods": {
+    "B0": {
+      "name": "B0 phone-or-URL (US format)",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.901,
+          "f1": 0.948,
+          "false_flag_legit": 0.138,
+          "false_flag_legit_ci95": [
+            0.063,
+            0.225
+          ],
+          "false_flag_hard_neg": 0.244,
+          "false_flag_hard_neg_ci95": [
+            0.111,
+            0.378
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 1
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.901,
+          "f1": 0.948,
+          "false_flag_legit": 0.138,
+          "false_flag_legit_ci95": [
+            0.063,
+            0.225
+          ],
+          "false_flag_hard_neg": 0.244,
+          "false_flag_hard_neg_ci95": [
+            0.111,
+            0.378
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 1
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.366,
+          "recall_ci95": [
+            0.22,
+            0.512
+          ],
+          "precision": 0.882,
+          "f1": 0.517,
+          "false_flag_legit": 0.2,
+          "false_flag_legit_ci95": [
+            0,
+            0.5
+          ],
+          "false_flag_hard_neg": 0.2,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.5
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.366
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.451
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.366,
+          "recall_ci95": [
+            0.22,
+            0.512
+          ],
+          "precision": 0.882,
+          "f1": 0.517,
+          "false_flag_legit": 0.2,
+          "false_flag_legit_ci95": [
+            0,
+            0.5
+          ],
+          "false_flag_hard_neg": 0.2,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.5
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.366
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.451
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.646,
+          "recall_ci95": [
+            0.552,
+            0.74
+          ],
+          "precision": 0.453,
+          "f1": 0.532,
+          "false_flag_legit": 0.625,
+          "false_flag_legit_ci95": [
+            0.542,
+            0.708
+          ],
+          "false_flag_hard_neg": 0.676,
+          "false_flag_hard_neg_ci95": [
+            0.586,
+            0.766
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 0.5
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 0.7
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.941
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.368
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 0.75
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.646,
+          "recall_ci95": [
+            0.552,
+            0.74
+          ],
+          "precision": 0.453,
+          "f1": 0.532,
+          "false_flag_legit": 0.625,
+          "false_flag_legit_ci95": [
+            0.542,
+            0.708
+          ],
+          "false_flag_hard_neg": 0.676,
+          "false_flag_hard_neg_ci95": [
+            0.586,
+            0.766
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 0.5
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 0.7
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.941
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.368
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 0.75
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "B0I": {
+      "name": "B0-intl any phone/URL (added post hoc)",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.8,
+          "f1": 0.889,
+          "false_flag_legit": 0.313,
+          "false_flag_legit_ci95": [
+            0.213,
+            0.413
+          ],
+          "false_flag_hard_neg": 0.556,
+          "false_flag_hard_neg_ci95": [
+            0.422,
+            0.689
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 1
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.8,
+          "f1": 0.889,
+          "false_flag_legit": 0.313,
+          "false_flag_legit_ci95": [
+            0.213,
+            0.413
+          ],
+          "false_flag_hard_neg": 0.556,
+          "false_flag_hard_neg_ci95": [
+            0.422,
+            0.689
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 1
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.805,
+          "recall_ci95": [
+            0.683,
+            0.927
+          ],
+          "precision": 0.825,
+          "f1": 0.815,
+          "false_flag_legit": 0.7,
+          "false_flag_legit_ci95": [
+            0.4,
+            0.9
+          ],
+          "false_flag_hard_neg": 0.7,
+          "false_flag_hard_neg_ci95": [
+            0.4,
+            0.9
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.805
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.706
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.805,
+          "recall_ci95": [
+            0.683,
+            0.927
+          ],
+          "precision": 0.825,
+          "f1": 0.815,
+          "false_flag_legit": 0.7,
+          "false_flag_legit_ci95": [
+            0.4,
+            0.9
+          ],
+          "false_flag_hard_neg": 0.7,
+          "false_flag_hard_neg_ci95": [
+            0.4,
+            0.9
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.805
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.706
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.99,
+          "recall_ci95": [
+            0.969,
+            1
+          ],
+          "precision": 0.482,
+          "f1": 0.648,
+          "false_flag_legit": 0.85,
+          "false_flag_legit_ci95": [
+            0.783,
+            0.917
+          ],
+          "false_flag_hard_neg": 0.919,
+          "false_flag_hard_neg_ci95": [
+            0.865,
+            0.964
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 1
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.947
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.99,
+          "recall_ci95": [
+            0.969,
+            1
+          ],
+          "precision": 0.482,
+          "f1": 0.648,
+          "false_flag_legit": 0.85,
+          "false_flag_legit_ci95": [
+            0.783,
+            0.917
+          ],
+          "false_flag_hard_neg": 0.919,
+          "false_flag_hard_neg_ci95": [
+            0.865,
+            0.964
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 1
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.947
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "B1": {
+      "name": "B1 keyword+regex",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.66,
+          "recall_ci95": [
+            0.56,
+            0.75
+          ],
+          "precision": 0.892,
+          "f1": 0.759,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0.038,
+            0.175
+          ],
+          "false_flag_hard_neg": 0.178,
+          "false_flag_hard_neg_ci95": [
+            0.067,
+            0.289
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 0.72
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 0.84
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.48
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.6
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.66,
+          "recall_ci95": [
+            0.56,
+            0.75
+          ],
+          "precision": 0.892,
+          "f1": 0.759,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0.038,
+            0.175
+          ],
+          "false_flag_hard_neg": 0.178,
+          "false_flag_hard_neg_ci95": [
+            0.067,
+            0.289
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 0.72
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 0.84
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.48
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.6
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.61,
+          "recall_ci95": [
+            0.463,
+            0.756
+          ],
+          "precision": 0.962,
+          "f1": 0.746,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.61
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.667
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.61,
+          "recall_ci95": [
+            0.463,
+            0.756
+          ],
+          "precision": 0.962,
+          "f1": 0.746,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.61
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.667
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.75,
+          "recall_ci95": [
+            0.667,
+            0.833
+          ],
+          "precision": 0.503,
+          "f1": 0.603,
+          "false_flag_legit": 0.592,
+          "false_flag_legit_ci95": [
+            0.5,
+            0.675
+          ],
+          "false_flag_hard_neg": 0.64,
+          "false_flag_hard_neg_ci95": [
+            0.55,
+            0.73
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 0.7
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.941
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.474
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 0.65
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.75,
+          "recall_ci95": [
+            0.667,
+            0.833
+          ],
+          "precision": 0.503,
+          "f1": 0.603,
+          "false_flag_legit": 0.592,
+          "false_flag_legit_ci95": [
+            0.5,
+            0.675
+          ],
+          "false_flag_hard_neg": 0.64,
+          "false_flag_hard_neg_ci95": [
+            0.55,
+            0.73
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 0.7
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.941
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.474
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 0.65
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.6,
+          "recall_ci95": [
+            0.3,
+            0.9
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.6,
+          "recall_ci95": [
+            0.3,
+            0.9
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "B2": {
+      "name": "B2 TF-IDF+LR",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.9,
+          "recall_ci95": [
+            0.84,
+            0.96
+          ],
+          "precision": 0.857,
+          "f1": 0.878,
+          "false_flag_legit": 0.188,
+          "false_flag_legit_ci95": [
+            0.113,
+            0.275
+          ],
+          "false_flag_hard_neg": 0.289,
+          "false_flag_hard_neg_ci95": [
+            0.156,
+            0.422
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.88
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.72
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.9,
+          "recall_ci95": [
+            0.84,
+            0.96
+          ],
+          "precision": 0.857,
+          "f1": 0.878,
+          "false_flag_legit": 0.188,
+          "false_flag_legit_ci95": [
+            0.113,
+            0.275
+          ],
+          "false_flag_hard_neg": 0.289,
+          "false_flag_hard_neg_ci95": [
+            0.156,
+            0.422
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.88
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.72
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.878,
+          "recall_ci95": [
+            0.78,
+            0.951
+          ],
+          "precision": 0.973,
+          "f1": 0.923,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.878
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.882
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.878,
+          "recall_ci95": [
+            0.78,
+            0.951
+          ],
+          "precision": 0.973,
+          "f1": 0.923,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.878
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": 0.882
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.875,
+          "recall_ci95": [
+            0.802,
+            0.927
+          ],
+          "precision": 0.832,
+          "f1": 0.853,
+          "false_flag_legit": 0.142,
+          "false_flag_legit_ci95": [
+            0.083,
+            0.208
+          ],
+          "false_flag_hard_neg": 0.153,
+          "false_flag_hard_neg_ci95": [
+            0.081,
+            0.225
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 0.95
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.706
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.684
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.875,
+          "recall_ci95": [
+            0.802,
+            0.927
+          ],
+          "precision": 0.832,
+          "f1": 0.853,
+          "false_flag_legit": 0.142,
+          "false_flag_legit_ci95": [
+            0.083,
+            0.208
+          ],
+          "false_flag_hard_neg": 0.153,
+          "false_flag_hard_neg_ci95": [
+            0.081,
+            0.225
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 0.95
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.706
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 0.684
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": null,
+          "tokens": {
+            "prompt": 0,
+            "completion": 0
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.7,
+          "recall_ci95": [
+            0.4,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.7,
+          "recall_ci95": [
+            0.4,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "LLM": {
+      "name": "LLM judge + decide",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.91,
+          "recall_ci95": [
+            0.85,
+            0.96
+          ],
+          "precision": 0.989,
+          "f1": 0.948,
+          "false_flag_legit": 0.013,
+          "false_flag_legit_ci95": [
+            0,
+            0.038
+          ],
+          "false_flag_hard_neg": 0.022,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.067
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.64
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.89,
+          "recall_ci95": [
+            0.83,
+            0.95
+          ],
+          "precision": 0.989,
+          "f1": 0.937,
+          "false_flag_legit": 0.013,
+          "false_flag_legit_ci95": [
+            0,
+            0.038
+          ],
+          "false_flag_hard_neg": 0.022,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.067
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.6
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.96
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.988,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.98
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.988,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.98
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.939,
+          "f1": 0.948,
+          "false_flag_legit": 0.05,
+          "false_flag_legit_ci95": [
+            0.017,
+            0.092
+          ],
+          "false_flag_hard_neg": 0.054,
+          "false_flag_hard_neg_ci95": [
+            0.018,
+            0.099
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.968,
+          "f1": 0.963,
+          "false_flag_legit": 0.025,
+          "false_flag_legit_ci95": [
+            0,
+            0.058
+          ],
+          "false_flag_hard_neg": 0.027,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.063
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.9,
+          "recall_ci95": [
+            0.7,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "LLM_FORM_ONLY": {
+      "name": "LLM form alone (callback && disputes)",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.83,
+          "recall_ci95": [
+            0.75,
+            0.9
+          ],
+          "precision": 1,
+          "f1": 0.907,
+          "false_flag_legit": 0,
+          "false_flag_legit_ci95": [
+            0,
+            0
+          ],
+          "false_flag_hard_neg": 0,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.6
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.72
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.83,
+          "recall_ci95": [
+            0.75,
+            0.9
+          ],
+          "precision": 1,
+          "f1": 0.907,
+          "false_flag_legit": 0,
+          "false_flag_legit_ci95": [
+            0,
+            0
+          ],
+          "false_flag_hard_neg": 0,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.6
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.72
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.976,
+          "recall_ci95": [
+            0.927,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.976,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.976
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.961
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 0.976,
+          "recall_ci95": [
+            0.927,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.976,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 0.976
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.961
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.968,
+          "f1": 0.963,
+          "false_flag_legit": 0.025,
+          "false_flag_legit_ci95": [
+            0,
+            0.058
+          ],
+          "false_flag_hard_neg": 0.027,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.063
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.968,
+          "f1": 0.963,
+          "false_flag_legit": 0.025,
+          "false_flag_legit_ci95": [
+            0,
+            0.058
+          ],
+          "false_flag_hard_neg": 0.027,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.063
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.7,
+          "recall_ci95": [
+            0.4,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.7,
+          "recall_ci95": [
+            0.4,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    },
+    "LLM_LEGACY": {
+      "name": "LLM judge + 5 Nov decide rule (ablation, same LLM answers)",
+      "test": {
+        "flag_susp_or_scam": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.93,
+          "recall_ci95": [
+            0.88,
+            0.98
+          ],
+          "precision": 0.969,
+          "f1": 0.949,
+          "false_flag_legit": 0.038,
+          "false_flag_legit_ci95": [
+            0,
+            0.088
+          ],
+          "false_flag_hard_neg": 0.067,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.156
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.72
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 180,
+          "n_scam": 100,
+          "n_legit": 80,
+          "n_hard_neg": 45,
+          "excluded_errors": 0,
+          "recall": 0.89,
+          "recall_ci95": [
+            0.83,
+            0.95
+          ],
+          "precision": 0.989,
+          "f1": 0.937,
+          "false_flag_legit": 0.013,
+          "false_flag_legit_ci95": [
+            0,
+            0.038
+          ],
+          "false_flag_hard_neg": 0.022,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.067
+          ],
+          "per_family_recall": {
+            "crypto_purchase": {
+              "n": 25,
+              "recall": 1
+            },
+            "geek_squad_service": {
+              "n": 25,
+              "recall": 1
+            },
+            "ads_subscription": {
+              "n": 25,
+              "recall": 0.6
+            },
+            "refund_overpayment": {
+              "n": 25,
+              "recall": 0.96
+            }
+          },
+          "mean_latency_ms": 2257,
+          "tokens": {
+            "prompt": 271733,
+            "completion": 79660
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "adv": {
+        "flag_susp_or_scam": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.988,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.98
+        },
+        "scam_only": {
+          "n": 51,
+          "n_scam": 41,
+          "n_legit": 10,
+          "n_hard_neg": 10,
+          "excluded_errors": 0,
+          "recall": 1,
+          "recall_ci95": [
+            1,
+            1
+          ],
+          "precision": 0.976,
+          "f1": 0.988,
+          "false_flag_legit": 0.1,
+          "false_flag_legit_ci95": [
+            0,
+            0.3
+          ],
+          "false_flag_hard_neg": 0.1,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.3
+          ],
+          "per_family_recall": {
+            "adv_scam": {
+              "n": 41,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2145,
+          "tokens": {
+            "prompt": 77311,
+            "completion": 21750
+          },
+          "adversarial_pass_rate": 0.98
+        }
+      },
+      "heldout2": {
+        "flag_susp_or_scam": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.893,
+          "f1": 0.925,
+          "false_flag_legit": 0.092,
+          "false_flag_legit_ci95": [
+            0.042,
+            0.142
+          ],
+          "false_flag_hard_neg": 0.099,
+          "false_flag_hard_neg_ci95": [
+            0.045,
+            0.162
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        },
+        "scam_only": {
+          "n": 216,
+          "n_scam": 96,
+          "n_legit": 120,
+          "n_hard_neg": 111,
+          "excluded_errors": 0,
+          "recall": 0.958,
+          "recall_ci95": [
+            0.917,
+            0.99
+          ],
+          "precision": 0.968,
+          "f1": 0.963,
+          "false_flag_legit": 0.025,
+          "false_flag_legit_ci95": [
+            0,
+            0.058
+          ],
+          "false_flag_hard_neg": 0.027,
+          "false_flag_hard_neg_ci95": [
+            0,
+            0.063
+          ],
+          "per_family_recall": {
+            "bank_fraud_alert": {
+              "n": 20,
+              "recall": 1
+            },
+            "gift_card_order": {
+              "n": 20,
+              "recall": 1
+            },
+            "web_hosting_domain_renewal": {
+              "n": 17,
+              "recall": 0.765
+            },
+            "extended_warranty_insurance": {
+              "n": 19,
+              "recall": 1
+            },
+            "paypal_account_limitation": {
+              "n": 20,
+              "recall": 1
+            }
+          },
+          "mean_latency_ms": 2508,
+          "tokens": {
+            "prompt": 344224,
+            "completion": 109084
+          },
+          "adversarial_pass_rate": null
+        }
+      },
+      "real": {
+        "flag_susp_or_scam": {
+          "n": 10,
+          "recall": 0.9,
+          "recall_ci95": [
+            0.7,
+            1
+          ],
+          "excluded_errors": 0
+        },
+        "scam_only": {
+          "n": 10,
+          "recall": 0.8,
+          "recall_ci95": [
+            0.5,
+            1
+          ],
+          "excluded_errors": 0
+        }
+      }
+    }
+  },
+  "heldout2_data": "eval/data/heldout2.jsonl",
+  "heldout2_generator": "openai/gpt-5-mini",
+  "git_commit": "353b959",
+  "generated_at": "2026-11-08T05:39:28.540Z"
+}

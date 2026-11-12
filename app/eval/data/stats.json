@@ -1,0 +1,73 @@
+{
+  "total": 541,
+  "by_split": {
+    "dev": 310,
+    "test": 180,
+    "adv": 51
+  },
+  "by_label": {
+    "scam": 291,
+    "legit": 250
+  },
+  "by_family": {
+    "dev/tech_support_renewal": 25,
+    "dev/paypal_unauthorized": 25,
+    "test/crypto_purchase": 25,
+    "dev/ecommerce_order": 25,
+    "dev/streaming_sub": 25,
+    "test/geek_squad_service": 25,
+    "dev/antivirus_renewal_mcafee": 25,
+    "test/ads_subscription": 25,
+    "test/refund_overpayment": 25,
+    "dev/remote_access_tech": 25,
+    "dev/legit_plumber_contractor": 20,
+    "dev/legit_landscaper": 20,
+    "dev/legit_tutor_teacher_translator": 20,
+    "dev/legit_wedding_photographer": 20,
+    "dev/legit_web_agency": 20,
+    "dev/legit_bakery_catering": 20,
+    "dev/legit_accountant": 20,
+    "dev/legit_dog_groomer": 20,
+    "test/it_consultant_av_reseller": 20,
+    "test/auto_repair": 20,
+    "test/event_venue": 20,
+    "test/software_reseller": 20,
+    "adv/adv_scam": 41,
+    "adv/adv_legit": 10
+  },
+  "by_split_label": {
+    "dev/scam": 150,
+    "test/scam": 100,
+    "dev/legit": 160,
+    "test/legit": 80,
+    "adv/scam": 41,
+    "adv/legit": 10
+  },
+  "hard_negatives": {
+    "legit_total": 250,
+    "hard": 132,
+    "by_split": {
+      "dev": 77,
+      "test": 45,
+      "adv": 10
+    }
+  },
+  "by_adversarial_type": {
+    "spaced_digits": 5,
+    "lookalike_unicode": 4,
+    "spelled_out": 4,
+    "number_in_item_name": 4,
+    "fullwidth_digits": 4,
+    "prompt_injection": 6,
+    "spanish": 10,
+    "french": 6,
+    "zero_width": 1,
+    "dotted_digits": 1,
+    "mixed_obfuscation": 1,
+    "leet_spacing": 1,
+    "do_not_call_after_9pm": 1,
+    "legit_hard_phone": 1,
+    "legit_urgent": 1,
+    "legit_refund": 1
+  }
+}
